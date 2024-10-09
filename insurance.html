@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="insurance.css" />
+    <title>Insurance Customer Self-Service Portal</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Insurance Customer Self-Service Portal</h1>
+        <nav class="nav">
+          <button id="fileClaimBtn">File a Claim</button>
+          <button id="trackClaimsBtn">Track Claims</button>
+          <button id="inspolicyBtn">Insurance Policy</button>
+          <button id="chatbotBtn">Chat with Us</button>
+        </nav>
+      </header>
+
+      <div class="content-wrapper">
+        <!-- Claim Submission Form -->
+        <section id="claimSubmission" class="hidden">
+          <h2>Submit a New Insurance Claim</h2>
+          <form id="claimForm">
+            <div class="form-group">
+              <label for="policyNumber">Policy Number:</label>
+              <input
+                type="text"
+                id="policyNumber"
+                placeholder="Enter your policy number"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="claimType">Claim Type:</label>
+              <select id="claimType" required>
+                <option value="">Select Claim Type</option>
+                <option value="Health">Health (HL11)</option>
+                <option value="Auto">Auto (AU22)</option>
+                <option value="Home">Home (HM33)</option>
+                <option value="Travel">Travel (TR44)</option>
+                <option value="Life">Life (LF55)</option>
+                <option value="Liability">Liability (LB66)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="incidentDate">Incident Date:</label>
+              <input type="date" id="incidentDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="incidentDescription">Incident Description:</label>
+              <textarea
+                id="incidentDescription"
+                placeholder="Describe the incident"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="supportingDocuments">Attach Files:</label>
+              <input type="file" id="supportingDocuments" multiple />
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Claim</button>
+          </form>
+          <div id="submissionMessage" class="hidden"></div>
+        </section>
+
+        <!-- Claim Status Search -->
+        <section id="claimStatus" class="hidden">
+          <h2>Track Your Claims</h2>
+          <input
+            type="text"
+            id="searchClaimNumber"
+            placeholder="Enter Claim Number to Search"
+          />
+          <button id="searchClaimBtn" class="submit-btn">Search</button>
+          <table id="claimsTable">
+            <thead>
+              <tr>
+                <th>Claim Number</th>
+                <th>Policy Number</th>
+                <th>Claim Type</th>
+                <th>Status</th>
+                <th>Assigned Position</th>
+                <th>Date Submitted</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamically populated claim status rows -->
+            </tbody>
+          </table>
+          <div id="searchResultMessage" class="hidden"></div>
+        </section>
+
+        <!-- Insurance Policy Section -->
+        <section id="knowledgeBase" class="hidden">
+          <h2>Insurance Policy</h2>
+          <div>
+            <p>
+              Find Insurance policy details and download full policy information
+              as a PDF.
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="policyType">Policy Type:</label>
+            <select id="policyType" required>
+              <option value="">Select Policy Type</option>
+              <option value="Health">Health (HL11)</option>
+              <option value="Auto">Auto (AU22)</option>
+              <option value="Home">Home (HM33)</option>
+              <option value="Travel">Travel (TR44)</option>
+              <option value="Life">Life (LF55)</option>
+              <option value="Liability">Liability (LB66)</option>
+            </select>
+          </div>
+
+          <div id="policyDetailsContainer"></div>
+
+          <!-- PDF Download button will be shown dynamically -->
+          <div id="downloadSection" class="hidden">
+            <button id="downloadPolicyBtn" class="submit-btn">
+              Download Full Policy Details
+            </button>
+          </div>
+        </section>
+
+        <!-- Chatbot Section -->
+        <section id="chatbot" class="hidden">
+          <h2>Chat with Us (AI-Powered Chatbot)</h2>
+          <div id="chatContainer">
+            <div id="chatMessages"></div>
+            <input
+              type="text"
+              id="userInput"
+              placeholder="How can we assist you today?"
+            />
+            <button id="sendMessage">Send</button>
+          </div>
+        </section>
+
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+      <!--   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+        <df-messenger
+          intent="WELCOME"
+          chat-title="Insurance"
+          agent-id="8c242472-a64d-47b8-b324-98d94943c9a9"
+          language-code="en"
+        ></df-messenger>
+      </div> -->
+
+      <footer>
+        <p>&copy; 2024 Insurance Company. All rights reserved.</p>
+        <p>
+          Contact us:
+          <a href="mailto:support@insurance.com">support@insurance.com</a> |
+          Phone: (123) 456-7890
+        </p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </footer>
+    </div>
+
+    <script src="insurance.js"></script>
+  </body>
+</html>
